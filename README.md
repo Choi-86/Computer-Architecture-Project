@@ -1,57 +1,26 @@
 # Computer-Architecture-Project
 
-### System Call Hooking  
-- ftrace 기반 커스텀 시스템콜 후킹을 구현하여 프로세스의 VMA, 파일 매핑, 메모리 접근 흐름을 추적.  
-- 특정 PID의 메모리 영역과 파일 정보를 커널 레벨에서 수집하고 출력 구조를 설계함.
+### MU0 Processor 설계  
+- Transmission Gate 기반 MUX, Latch, D-FF, Up/Down Counter 구현 후 MU0 2-cycle CPU 동작 검증.
 
-### Process Tracing  
-- fork 호출 횟수를 커널 소스 수정으로 계측하고, 프로세스 생성·종료 흐름을 분석.  
-- /proc 기반 정보와 task_struct를 참조하여 프로세스 상태 변화를 관찰.
+### MIPS Single-Cycle CPU 구현  
+- AND/NOR/ADDI/SLTU 등 명령어 추가, datapath·제어신호 설계, PLA 기반 명령어 디코딩 구현.
 
-### CPU Scheduling  
-- FCFS, SJF, RR 스케줄러를 직접 구현하고 Gantt Chart로 시각화.  
-- 평균 대기 시간, 반환 시간, 응답 시간 계산 및 알고리즘 비교.
+### MIPS Multi-Cycle CPU 구현  
+- Microprogramming(FSM) 기반 DISP_ROM / MICRO_ROM 설계, 다단계 실행 흐름 구성.
 
-### Multi-processing Performance  
-- 동일 연산을 fork vs thread로 수행하며 clock_gettime으로 성능 측정.  
-- 메모리 공유 여부, context switching 비용 차이를 통해 성능 특성 분석.
+### Pipeline Hazard 분석  
+- 제공된 sort 코드에서 Data/Control Hazard 분석, NOP 최소화 및 Forwarding 적용해 성능 최적화.
 
-### Page Replacement Algorithms  
-- FIFO, LRU, Clock 알고리즘 구현 및 페이지 폴트 수 비교.  
-- 다양한 페이지 프레임 수에 따른 동작 변화를 시뮬레이션.
+### Cache Architecture 분석  
+- Bubble Sort / Random Access의 I-cache·D-cache hit/miss 동작 비교, SimpleScalar로 AMAT 실험.
 
-### Pipeline Hazard Analysis  
-- MIPS 파이프라인 코드에서 Data/Control Hazard를 식별하고 NOP 제거·Forwarding 설계.  
-- 시뮬레이션을 통해 사이클 수 감소 효과 검증.
+#### 전체 흐름 요약
+- CPU 구조(단일/다중 사이클), 파이프라인, 캐시·메모리 계층, 주소 변환·가상 메모리 전반 이해 및 구현.
 
-### Cache Architecture & AMAT Analysis  
-- Bubble Sort / Random Access의 캐시 접근 패턴 분석 (I-cache, D-cache hit/miss).  
-- SimpleScalar 기반으로 cache size, block size, associativity 변화에 따른 AMAT 비교.
-
-### Virtual Memory & Demand Paging  
-- 가상 주소 → 물리 주소 매핑, TLB 역할, page fault 처리 과정 이해.  
-- Demand Paging 환경에서 메모리 사용 패턴 및 swap 동작 분석.
 
 ### Technologies Used:
-Languages  
-- C, Assembly(MIPS), Shell Script
-
-Environment  
-- Linux (Ubuntu), Linux Kernel 5.x  
-- Logisim-E, SimpleScalar, Icarus Verilog
-
-Tools & APIs  
-- gcc, Makefile  
-- ftrace, dmesg  
-- clock_gettime  
-- GDB, objdump  
-- Verilog simulation tools  
-- PLA design tools (Single Cycle / Multi-Cycle CPU)
-
-Core Concepts  
-- Process Management, Scheduling, System Call Hooking  
-- Pipeline Hazard (Data/Control/Structural)  
-- Cache Design, AMAT, Memory Hierarchy  
-- Page Replacement Algorithms, Virtual Memory, TLB  
-- Multi-threading vs Multi-processing  
-- CPU Datapath, Microprogramming, FSM
+- Languages: Verilog, C, MIPS Assembly  
+- Tools: Logisim-E, SimpleScalar, Icarus Verilog, gcc, Makefile  
+- Environment: Linux (Ubuntu)  
+- Concepts: Datapath & Control, Microprogramming, Pipeline Hazard, Cache & AMAT, Virtual Memory
